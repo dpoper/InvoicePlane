@@ -425,7 +425,7 @@ $config['encryption_key'] = env('ENCRYPTION_KEY');
 $config['sess_driver'] = env('SESS_DRIVER', 'files');
 $config['sess_table_name'] = env('SESS_DRIVER', 'ip_sessions');
 $config['sess_cookie_name'] = env('SESS_DRIVER', 'dp_ip_session');
-$config['sess_expiration'] = env('SESS_EXPIRATION', 864000);
+$config['sess_expiration'] = env('SESS_EXPIRATION', 7200);
 $config['sess_save_path'] = sys_get_temp_dir();
 $config['sess_match_ip'] = env('SESS_MATCH_IP', true);
 $config['sess_time_to_update'] = 300;
@@ -449,7 +449,7 @@ $config['sess_regenerate_destroy'] = FALSE;
 $config['cookie_prefix'] = '';
 $config['cookie_domain'] = '';
 $config['cookie_path'] = '/';
-$config['cookie_secure'] = env('COOKIE_SECURE', false);
+$config['cookie_secure'] = env('COOKIE_SECURE', true);
 $config['cookie_httponly'] = FALSE;
 
 /*
