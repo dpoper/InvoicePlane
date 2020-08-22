@@ -1,0 +1,8 @@
+/* =============================================================================
+   InvoicePlane
+   Custom Stylesheet
+   Custom Stylesheet for guest web view
+   All changes made in this file will override the default styles.
+   ========================================================================== */
+#invoice-logo{max-height:125px;
+text-align:right}

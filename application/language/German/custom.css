@@ -1,0 +1,128 @@
+/* =============================================================================
+   InvoicePlane
+   Custom Stylesheet
+
+   All changes made in this file will override the default styles.
+   ========================================================================== */
+img.preview{
+	vertical-align:middle;
+	max-height: 100px;
+	margin-left: auto;
+	display: block;
+}
+.btn-topsm,.btn-primary>.btn{
+	padding:5px 10px;
+	font-size:12px;
+	line-height:1.5;
+	border-radius:3px;
+	display: block;
+}
+
+    #footer-cookie,
+    #footer-cookie * {
+      box-sizing: border-box;
+    }
+
+    #footer-cookie {
+      display: none;
+      position: fixed;
+      bottom: 0px;
+      left: 0px;
+      width: 100%;
+      padding-left: 30px;
+      padding-right: 30px;
+      background: #303030;
+      color: #fff;
+    }
+
+    #footer-cookie a {
+      color: #2C8EDD;
+    }
+
+    #footer-cookie #description {
+      float: left;
+    }
+
+    #footer-cookie #accept {
+      float: left;
+    }
+
+    #footer-cookie #accept a {
+      border: 1px solid #fff;
+	  color: #fff;
+      width: 100%;
+      display: block;
+      text-align: center;
+    }
+
+    @media (max-width: 1200px) {
+      #footer-cookie {
+        padding-top: 50px;
+        padding-bottom: 50px;
+        line-height: inherit;
+      }
+
+      #footer-cookie #description {
+        width: 100%;
+      }
+
+      #footer-cookie #accept {
+        width: 100%;
+        margin-top: 50px;
+      }
+
+	  #footer-cookie #accept a {
+       border: 1px solid #fff;
+       padding-top: 100px;
+	   color: #fff;
+       width: 100%;
+       display: block;
+       text-align: center;
+     }
+	}
+    #footer-impressum,
+    #footer-impressum * {
+      box-sizing: border-box;
+    }
+
+    #footer-impressum {
+      display: block;
+      position: fixed;
+      bottom: 0px;
+      left: 0px;
+      width: 100%;
+      height: 60px;
+      padding-left: 30px;
+      padding-right: 30px;
+      line-height: 60px;
+      background: #303030;
+      color: #fff;
+    }
+
+    #footer-impressum a {
+      color: #fff;
+    }
+
+    #footer-impressum #impressum {
+      float: left;
+    }
+
+    @media (max-width: 1200px) {
+      #footer-impressum {
+        padding-top: 50px;
+        padding-bottom: 50px;
+        line-height: inherit;
+      }
+
+      #footer-impressum #description {
+        width: 100%;
+      }
+	  #footer-cookie #description a {
+       border: 1px solid #fff;
+       padding-top: 100px;
+	   color: #2C8EDD;
+       width: 100%;
+       display: block;
+       text-align: center;
+     }
+	}
