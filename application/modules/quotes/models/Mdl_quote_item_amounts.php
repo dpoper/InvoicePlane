@@ -20,7 +20,7 @@ class Mdl_Quote_Item_Amounts extends CI_Model
      * item_id
      * item_subtotal (item_quantity * item_price)
      * item_tax_total
-     * item_total ((item_quantity * item_price) + item_tax_total)
+     * item_total ((item_quantity * item_price) + item_tax_total) Be Aware item_total_gross
      *
      * @param $item_id
      */

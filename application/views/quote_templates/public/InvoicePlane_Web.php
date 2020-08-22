@@ -162,7 +162,7 @@
                             <th class="text-right"><?php echo trans('qty'); ?></th>
                             <th class="text-right"><?php echo trans('price'); ?></th>
                             <th class="text-right"><?php echo trans('discount'); ?></th>
-                            <th class="text-right"><?php echo trans('total'); ?></th>
+                            <th class="text-right"><?php echo trans('item_total_gross'); ?></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -179,7 +179,7 @@
                                 </td>
                                 <td class="amount"><?php echo format_currency($item->item_price); ?></td>
                                 <td class="amount"><?php echo format_currency($item->item_discount); ?></td>
-                                <td class="amount"><?php echo format_currency($item->item_total); ?></td>
+                                <td class="amount"><?php echo format_currency($item->item_total_gross); ?></td>
                             </tr>
                         <?php endforeach ?>
                         <tr>

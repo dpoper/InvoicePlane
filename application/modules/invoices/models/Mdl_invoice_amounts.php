@@ -31,8 +31,12 @@ class Mdl_Invoice_Amounts extends CI_Model
      * item_id
      * item_tax_rate_id
      * item_subtotal            item_quantity * item_price
+	 * Dirk Poper
+	 * item_subtotal could be incorrect
+	 * IHMO: item_subtotal should be item_quantity * (item_price - item_discount)
+	 * needs to be fixed in Mdl_item_amounts.php
      * item_tax_total           item_subtotal * tax_rate_percent
-     * item_total               item_subtotal + item_tax_total
+     * item_total               item_subtotal + item_tax_total Be Aware: item_total_gross
      *
      * @param $invoice_id
      */
@@ -40,10 +44,11 @@ class Mdl_Invoice_Amounts extends CI_Model
     {
         // Get the basic totals
         $query = $this->db->query("
-        SELECT  SUM(item_subtotal) AS invoice_item_subtotal,
+        SELECT  SUM(item_subtotal_discounted) AS invoice_item_subtotal,
 		        SUM(item_tax_total) AS invoice_item_tax_total,
-		        SUM(item_subtotal) + SUM(item_tax_total) AS invoice_total,
-		        SUM(item_discount) AS invoice_item_discount
+		        SUM(item_subtotal_discounted) + SUM(item_tax_total) AS invoice_total,
+		        SUM(item_discount_total) AS invoice_item_discount,
+				SUM(item_total_net) AS invoice_item_total_net
 		FROM ip_invoice_item_amounts
 		WHERE item_id IN (
 		    SELECT item_id FROM ip_invoice_items WHERE invoice_id = " . $this->db->escape($invoice_id) . "
@@ -52,7 +57,8 @@ class Mdl_Invoice_Amounts extends CI_Model
 
         $invoice_amounts = $query->row();
 
-        $invoice_item_subtotal = $invoice_amounts->invoice_item_subtotal - $invoice_amounts->invoice_item_discount;
+        //$invoice_item_subtotal = $invoice_amounts->invoice_item_subtotal - $invoice_amounts->invoice_item_discount;
+        $invoice_item_subtotal = $invoice_amounts->invoice_item_subtotal;
         $invoice_subtotal = $invoice_item_subtotal + $invoice_amounts->invoice_item_tax_total;
         $invoice_total = $this->calculate_discount($invoice_id, $invoice_subtotal);
 

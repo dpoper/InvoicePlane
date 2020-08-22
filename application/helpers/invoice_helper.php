@@ -27,6 +27,22 @@ function invoice_logo()
 }
 
 /**
+ * Returns the invoice logo for web view
+ *
+ * @return string
+ */
+function invoice_logo_web()
+{
+    $CI = &get_instance();
+
+    if ($CI->mdl_settings->setting('invoice_logo')) {
+        return '<img class="web-view" src="' . base_url() . 'uploads/' . $CI->mdl_settings->setting('invoice_logo') . '">';
+    }
+
+    return '';
+}
+
+/**
  * Returns the invoice logo for PDF files
  *
  * @return string
