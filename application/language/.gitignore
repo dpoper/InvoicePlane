@@ -4,3 +4,5 @@
 !German
 !German/*
 !.gitignore
+!.htaccess
+!index.html
