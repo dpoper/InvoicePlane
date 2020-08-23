@@ -86,7 +86,6 @@
         <div class="invoice">
 
             <?php
-            $logo = invoice_logo_web();
             $logo = invoice_logo_web_preview();
             if ($logo) {
                 echo $logo . '<br><br>';
