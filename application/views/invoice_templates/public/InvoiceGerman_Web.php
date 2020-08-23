@@ -10,24 +10,17 @@
     </title>
 
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/core/css/custom.css">
+
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/<?php echo get_setting('system_theme', 'invoiceplane'); ?>/css/style.css">
-    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/<?php echo get_setting('system_theme', 'invoiceplane'); ?>/css/custom.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/core/css/custom-web.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/<?php echo get_setting('system_theme', 'invoiceplane'); ?>/css/custom-web.css">
 
 </head>
-<?php
-    // Discount settings
-    $show_item_discounts = false;
-	$colspan=4;
-    foreach ($items as $item) {
-        if ($item->item_discount != '0.00') {
-            $show_item_discounts = true;
-			$colspan=5;
-        }
-    }
-?>
-<body>
 
+<body>
+<?php
+	$colspan = 5;
+?>
 <div class="container">
     <div id="content">
 
@@ -82,7 +75,7 @@
         <div class="invoice">
 
             <?php
-            $logo = invoice_logo_web_preview();
+            $logo = invoice_logo_web();
             if ($logo) {
                 echo $logo . '<br><br>';
             }
@@ -189,17 +182,20 @@
                 <div class="table-responsive">
                     <table class="table table-striped table-bordered">
                         <thead>
-							<tr>
-								<th><?php echo trans('item'); ?></th>
-								<th><?php echo trans('description'); ?></th>
-								<th class="text-right"><?php echo trans('qty'); ?></th>
-								<th class="text-right"><?php echo trans('price'); ?></th>
-								<?php if ($show_item_discounts) : ?>
-									<th class="text-right"><?php _trans('discount'); ?></th>
-								<?php endif; ?>
-								<th class="text-right"><?php _trans('item_tax_rate'); ?></th>
-								<th class="text-right"><?php echo trans('item_subtotal'); ?></th>
-							</tr>
+                        <tr>
+                            <th><?php echo trans('item'); ?></th>
+                            <th><?php echo trans('description'); ?></th>
+                            <th class="text-right"><?php echo trans('qty'); ?><br><?php _trans('product_unit'); ?></th>
+                            <th class="text-right"><?php echo trans('price_net_single_total'); ?></th>
+							<?php //if ($show_item_discounts) : ?>
+								<th class="text-right"><?php echo trans('discount_net_single_total'); ?></th>
+							<?php //endif; ?>
+							<th class="item-tax_rate">
+								<?php _trans('item_tax_rate'); ?><br>
+								<?php _trans('item_tax_amount'); ?>
+							</th>
+                            <th class="text-right"><?php echo trans('item_subtotal_pos_net'); ?></th>
+                        </tr>
                         </thead>
                         <tbody>
                         <?php foreach ($items as $item) : ?>
@@ -213,14 +209,19 @@
                                         <small><?php _htmlsc($item->item_product_unit); ?></small>
                                     <?php endif; ?>
                                 </td>
-                                <td class="amount"><?php echo format_currency($item->item_price); ?></td>
-								<?php if ($show_item_discounts) : ?>
-									<td class="amount">
-										<?php echo format_currency($item->item_discount); ?>
-									</td>
-								<?php endif; ?>
-								<td class="amount"><?php echo format_amount($item->item_tax_rate_percent); ?>%</td>
-                                <td class="amount"><?php echo format_currency($item->item_subtotal); ?></td>
+                                <td class="amount">
+									<?php echo format_currency($item->item_price); ?><br>
+									<?php echo format_currency($item->item_subtotal); ?>
+								</td>
+                                <td class="amount">
+									<?php echo format_currency($item->item_discount_amount); ?> <br>
+									<?php echo format_currency($item->item_discount_total); ?>
+								</td>
+								<td class="item-tax_rate">
+									<?php echo format_amount($item->item_tax_rate_percent); ?>%<br>
+									<?php echo format_currency($item->item_tax_total); ?>
+								</td>
+                                <td class="amount"><?php echo format_currency($item->item_subtotal_discounted); ?></td>
                             </tr>
                         <?php endforeach ?>
                         <tr>
@@ -297,17 +298,11 @@
 
             <div class="row">
                 <?php if ($invoice->invoice_terms) { ?>
-                    <div class="col-xs-12 col-md-12">
+                    <div class="col-xs-12 col-md-6">
                         <h4><?php echo trans('terms'); ?></h4>
                         <p><?php echo nl2br(htmlsc($invoice->invoice_terms)); ?></p>
                     </div>
-                <?php }
-				if ($custom_fields['client']['Rechnungsbedingungen']): ?>
-					<div class="col-xs-12 col-md-12">
-						<h4><?php _trans('terms_client'); ?></h4>
-						<p><?php echo nl2br(htmlsc($custom_fields['client']['Rechnungsbedingungen'])); ?></p>
-					</div>
-				<?php endif; ?>
+                <?php } ?>
             </div>
 
         </div><!-- .invoice-items -->
