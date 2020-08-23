@@ -1,5 +1,8 @@
 *
 !.gitignore
+!.htaccess
+!index.html
+!index.php
 
 # Core
 !core
@@ -19,5 +22,6 @@
 
 # My themes
 !invoiceplane_dpoper_blue
+!invoiceplane_dpoper_blue/*
 !invoiceplane_dpoper_blue/**/*
 

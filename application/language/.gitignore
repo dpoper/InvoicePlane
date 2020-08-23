@@ -6,3 +6,5 @@
 !english
 !english/*
 !.gitignore
+!.htaccess
+!index.html

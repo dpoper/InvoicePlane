@@ -1,7 +1,9 @@
+!.gitignore
+!.htaccess
 # Configuration stuff
 /application/config/development
 /application/sessions
-/ipconfig.php
+!/ipconfig.php
 
 # Dependencies
 /node_modules
@@ -15,5 +17,5 @@ adminer.php
 /nbproject
 /.php_cs.cache
 /doc
-favicon.ico
-fav.ico
+!favicon.ico
+!fav.ico

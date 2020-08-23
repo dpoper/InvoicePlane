@@ -1,3 +1,7 @@
 *
-!.htaccess
 !.gitignore
+!.htaccess
+!index.html
+!index.php
+!fav.ico
+!favicon.ico
