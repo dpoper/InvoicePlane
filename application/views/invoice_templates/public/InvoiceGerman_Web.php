@@ -11,6 +11,7 @@
 
     <meta name="viewport" content="width=device-width,initial-scale=1">
 
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/core/css/custom.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/<?php echo get_setting('system_theme', 'invoiceplane'); ?>/css/style.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/core/css/custom-web.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/<?php echo get_setting('system_theme', 'invoiceplane'); ?>/css/custom-web.css">
@@ -20,7 +21,17 @@
 <body>
 <?php
 	$colspan = 5;
+    // Discount settings
+    $show_item_discounts = false;
+	$colspan=4;
+    foreach ($items as $item) {
+        if ($item->item_discount != '0.00') {
+            $show_item_discounts = true;
+			$colspan=5;
+        }
+    }
 ?>
+
 <div class="container">
     <div id="content">
 
@@ -75,7 +86,7 @@
         <div class="invoice">
 
             <?php
-            $logo = invoice_logo_web();
+            $logo = invoice_logo_web_preview();
             if ($logo) {
                 echo $logo . '<br><br>';
             }
@@ -302,7 +313,13 @@
                         <h4><?php echo trans('terms'); ?></h4>
                         <p><?php echo nl2br(htmlsc($invoice->invoice_terms)); ?></p>
                     </div>
-                <?php } ?>
+                <?php }
+				if ($custom_fields['client']['Rechnungsbedingungen']): ?>
+					<div class="col-xs-12 col-md-12">
+						<h4><?php _trans('terms_client'); ?></h4>
+						<p><?php echo nl2br(htmlsc($custom_fields['client']['Rechnungsbedingungen'])); ?></p>
+					</div>
+				<?php endif; ?>
             </div>
 
         </div><!-- .invoice-items -->
