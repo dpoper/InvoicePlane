@@ -192,7 +192,7 @@
                 <td class="td-amount td-vert-middle">
                     <span><?php _trans('subtotal'); ?></span><br/>
                     <span name="subtotal" class="amount">
-                        <?php echo format_currency($item->item_subtotal); ?>
+                        <?php echo format_currency($item->item_subtotal_discounted); ?>
                     </span>
                 </td>
                 <td class="td-amount td-vert-middle">

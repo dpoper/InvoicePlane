@@ -115,7 +115,7 @@
                 <span name="subtotal" class="amount"></span>
             </td>
             <td class="td-amount td-vert-middle">
-                <span><?php _trans('discount'); ?></span><br/>
+                <span><?php _trans('discount_invoice'); ?></span><br/>
                 <span name="item_discount_total" class="amount"></span>
             </td>
             <td class="td-amount td-vert-middle">
@@ -202,6 +202,7 @@
                             <?php if ($invoice->is_read_only == 1) {
                                 echo 'disabled="disabled"';
                             } ?>>
+						<div class="input-group-addon"><?php echo get_setting('currency_symbol'); ?></div>
                     </div>
                 </td>
                 <td class="td-amount">
@@ -271,15 +272,15 @@
                     </div>
                 </td>
                 <td class="td-amount td-vert-middle">
-                    <span><?php _trans('subtotal'); ?></span><br/>
+                    <span><?php _trans('subtotal_net'); ?></span><br/>
                     <span name="subtotal" class="amount">
-                        <?php echo format_currency($item->item_subtotal); ?>
+                        <?php echo format_currency($item->item_subtotal_discounted); ?>
                     </span>
                 </td>
                 <td class="td-amount td-vert-middle">
-                    <span><?php _trans('discount'); ?></span><br/>
+                    <span><?php _trans('discount_item_total_net'); ?></span><br/>
                     <span name="item_discount_total" class="amount">
-                        <?php echo format_currency($item->item_discount); ?>
+                        <?php echo format_currency($item->item_discount_total); ?>
                     </span>
                 </td>
                 <td class="td-amount td-vert-middle">
@@ -289,9 +290,14 @@
                     </span>
                 </td>
                 <td class="td-amount td-vert-middle">
-                    <span><?php _trans('total'); ?></span><br/>
-                    <span name="item_total" class="amount">
-                        <?php echo format_currency($item->item_total); ?>
+                    <span><?php _trans('posten_total_bru'); ?></span><br/>
+                    <span name="item_total_gross" class="amount">
+                        <?php echo format_currency($item->item_total_gross); ?>
+                    </span>
+					<br>
+                    <span><?php _trans('posten_total_net'); ?></span><br/>
+                    <span name="item_total_net" class="amount">
+                        <?php echo format_currency($item->item_total_net); ?>
                     </span>
                 </td>
             </tr>
@@ -326,7 +332,7 @@
     <div class="col-xs-12 col-md-6 col-md-offset-2 col-lg-4 col-lg-offset-4">
         <table class="table table-bordered text-right">
             <tr>
-                <td style="width: 40%;"><?php _trans('subtotal'); ?></td>
+                <td style="width: 40%;"><?php _trans('subtotal_net'); ?></td>
                 <td style="width: 60%;"
                     class="amount"><?php echo format_currency($invoice->invoice_item_subtotal); ?></td>
             </tr>

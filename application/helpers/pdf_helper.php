@@ -54,7 +54,7 @@ function generate_invoice_pdf($invoice_id, $stream = true, $invoice_template = n
     // Discount settings
     $show_item_discounts = false;
     foreach ($items as $item) {
-        if ($item->item_discount != '0.00') {
+        if ($item->item_discount_total != '0.00') {
             $show_item_discounts = true;
         }
     }

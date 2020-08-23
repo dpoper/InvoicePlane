@@ -28,18 +28,36 @@ class Mdl_Item_Amounts extends CI_Model
     {
         $this->load->model('invoices/mdl_items');
         $item = $this->mdl_items->get_by_id($item_id);
-
-        $item_subtotal = $item->item_quantity * $item->item_price;
-        $item_tax_total = $item_subtotal * ($item->item_tax_rate_percent / 100);
+/*
+ * Dirk Poper
+ * IHMO totally incorrect calculation
+ * wrong:		$item_subtotal = $item->item_quantity * $item->item_price;
+ * should be:	$item_subtotal = $item->item_quantity * ($item->item_price - $item->item_discount_amount);
+ * in this case $item_tax_total will be correct too.
+ * wrong:		$item_discount_total = $item->item_discount_amount * $item->item_quantity;
+ * should be:	$item_discount_total = $item->item_discount_amount * $item->item_quantity * ($item->item_tax_rate_percent / 100);
+ * or better:	$item_discount_total = $item_subtotal * ($item->item_tax_rate_percent / 100) (if item_subtotal has ben changed to: $item_subtotal = $item->item_quantity * ($item->item_price - $item->item_discount_amount)
+ * in this case item_total needs to be changed to $item_total = $item_subtotal + $item_tax_total
+ * Beaware: Changes here will have impact on IP_INVOICE_AMOUNTS in Mdl_invoice_amounts.php
+*/
+        //Alt: $item_subtotal = $item->item_quantity * $item->item_price;
+		$item_subtotal = $item->item_quantity * $item->item_price;
+		//$item_subtotal = $item->item_quantity * ($item->item_price - $item->item_discount_amount);
+		$item_subtotal_discounted = $item->item_quantity * ($item->item_price - $item->item_discount_amount);
+        $item_tax_total = $item_subtotal_discounted * ($item->item_tax_rate_percent / 100);
         $item_discount_total = $item->item_discount_amount * $item->item_quantity;
-        $item_total = $item_subtotal + $item_tax_total - $item_discount_total;
+        //Alt: $item_total = $item_subtotal + $item_tax_total - $item_discount_total;
+		$item_total_gross = $item_subtotal + $item_tax_total;
+		$item_total_net = $item_subtotal;
 
         $db_array = array(
             'item_id' => $item_id,
             'item_subtotal' => $item_subtotal,
+			'item_subtotal_discounted' => $item_subtotal_discounted,
             'item_tax_total' => $item_tax_total,
-            'item_discount' => $item_discount_total,
-            'item_total' => $item_total
+            'item_discount_total' => $item_discount_total,
+            'item_total_gross' => $item_total_gross,
+            'item_total_net' => $item_total_net
         );
 
         $this->db->where('item_id', $item_id);

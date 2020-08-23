@@ -128,7 +128,7 @@
                         </td>
                         <td>
                             <span class="pull-left"><?php _trans('total'); ?></span>
-                            <span class="pull-right amount"><?php echo format_currency($item->item_total); ?></span>
+                            <span class="pull-right amount"><?php echo format_currency($item->item_total_gross); ?></span>
                         </td>
                     </tr>
                     </tbody>
