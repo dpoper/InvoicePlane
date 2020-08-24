@@ -22,14 +22,14 @@
 <?php
 	$colspan = 5;
     // Discount settings
-    $show_item_discounts = false;
-	$colspan=4;
-    foreach ($items as $item) {
-        if ($item->item_discount != '0.00') {
-            $show_item_discounts = true;
-			$colspan=5;
-        }
-    }
+    //$show_item_discounts = false;
+	//$colspan=4;
+    //foreach ($items as $item) {
+        //if ($item->item_discount != '0.00') {
+            //$show_item_discounts = true;
+			//$colspan=5;
+//        }
+//    }
 ?>
 
 <div class="container">
