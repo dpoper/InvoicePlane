@@ -1,0 +1,6 @@
+invoiceplane merge=ours
+invoiceplane/* merge=ours
+invoiceplane/** merge=ours
+invoiceplane_blue merge=ours
+invoiceplane_blue/* merge=ours
+invoiceplane_blue/** merge=ours
