@@ -108,14 +108,6 @@
               <td><?php _htmlsc($invoice->user_vat_id); ?></td>
             </tr>
           <?php endif; ?>
-<!-- <<<<<<< HEAD -->
-          <?php if ($invoice->client_vat_id): ?>
-            <tr>
-              <td><?php echo trans('vat_id_client') . ':'; ?></td>
-              <td><?php _htmlsc($invoice->client_vat_id); ?></td>
-            </tr>
-<!-- ======= -->
-<!-- >>>>>>> GH.v.1.5.12-item_subtotal -->
           <?php // if ($invoice->client_vat_id): ?>
 		  <?php if (isset($invoice->client_vat_id)): ?>
 			<?php if ($invoice->client_vat_id <> ''): ?>
@@ -124,10 +116,6 @@
 				  <td><?php _htmlsc($invoice->client_vat_id); ?></td>
 				</tr>
 			<?php endif; ?>
-<!-- <<<<<<< HEAD -->
-<!-- >>>>>>> invoiceplane_dpoper_blue.theme -->
-<!-- ======= -->
-<!-- >>>>>>> GH.v.1.5.12-item_subtotal -->
           <?php endif; ?>
           <tr>
             <td><?php echo trans('invoice_date') . ':'; ?></td>
@@ -143,31 +131,15 @@
                 <td><?php _htmlsc($payment_method->payment_method_name); ?></td>
               </tr>
           <?php endif; ?>
-<!-- <<<<<<< HEAD -->
-          <?php if ($custom_fields['client']['Kundennummer']): ?>
-<!-- ======= -->
           <?php //if ($custom_fields['client']['Kundennummer']): ?>
 		  <?php if (isset($custom_fields['client']['Kundennummer'])): ?>
-<!-- >>>>>>> invoiceplane_dpoper_blue.theme
-<!-- ======= -->
-          <?php //if ($custom_fields['client']['Kundennummer']): ?>
-		  <?php if (isset($custom_fields['client']['Kundennummer'])): ?>
-<!-- >>>>>>> GH.v.1.5.12-item_subtotal -->
             <tr>
               <td><?php echo trans('cus_id') . ': '; ?></td>
               <td><?php echo $custom_fields['client']['Kundennummer']; ?></td>
             </tr>
           <?php endif; ?>
-<!-- <<<<<<< HEAD  -->
-          <?php if ($custom_fields['client']['BAN']): ?>
-<!-- ======= -->
           <?php //if ($custom_fields['client']['BAN']): ?>
 		  <?php if (isset($custom_fields['client']['BAN'])): ?>
-<!-- >>>>>>> invoiceplane_dpoper_blue.theme -->
-<!-- ======= -->
-          <?php //if ($custom_fields['client']['BAN']): ?>
-		  <?php if (isset($custom_fields['client']['BAN'])): ?>
-<!-- >>>>>>> GH.v.1.5.12-item_subtotal -->
             <tr>
               <td><?php echo trans('ban') . ': '; ?></td>
               <td><?php echo $custom_fields['client']['BAN']; ?></td>
@@ -183,16 +155,6 @@
 			<tr>
 				<th class="item-name"><?php _trans('item'); ?></th>
 				<th class="item-desc"><?php _trans('description'); ?></th>
-<!-- <<<<<<< HEAD -->
-				<th class="item-amount"><?php _trans('qty'); ?></th>
-				<th class="item-price"><?php _trans('price'); ?></th>
-				<?php if ($show_item_discounts) : ?>
-					<th class="item-discount"><?php _trans('discount'); ?></th>
-				<?php endif; ?>
-				<th class="item-tax_rate"><?php _trans('item_tax_rate'); ?></th>
-				<th class="item-total"><?php _trans('item_subtotal'); ?></th>
-<!-- ======= -->
-<!-- >>>>>>> GH.v.1.5.12-item_subtotal -->
 				<th class="item-amount"><?php _trans('qty'); ?><br><?php _trans('product_unit'); ?></th>
 				<th class="item-price"><?php _trans('price_net_single_total'); ?></th>
 				<?php if ($show_item_discounts) : ?>
@@ -203,10 +165,6 @@
 					<?php _trans('item_tax_amount'); ?>
 				</th>
 				<th class="item-total"><?php _trans('item_subtotal_pos_net'); ?></th>
-<!-- <<<<<<< HEAD -->
-<!-- >>>>>>> invoiceplane_dpoper_blue.theme -->
-<!-- ======= -->
-<!-- >>>>>>> GH.v.1.5.12-item_subtotal -->
 			</tr>
         </thead>
         <tbody>
@@ -223,27 +181,6 @@
                         <?php _htmlsc($item->item_product_unit); ?>
                     <?php endif; ?>
                 </td>
-<!-- <<<<<<< HEAD -->
-                <td class="item-price"><?php echo format_currency($item->item_price); ?></td>
-                <?php if ($show_item_discounts) : ?>
-                    <td class="item-discount">
-                        <?php echo format_currency($item->item_discount); ?>
-                    </td>
-                <?php endif; ?>
-                <td class="item-tax_rate"><?php echo format_amount($item->item_tax_rate_percent); ?>%</td>
-                <td class="item-total"><?php echo format_currency($item->item_subtotal); ?></td>
-            </tr>
-        <?php } ?>
-        </tbody>
-        <tbody class="invoice-sums">
-        <tr>
-            <td class="text-right" colspan=" <?php echo $colspan; ?> ">
-                <?php _trans('subtotal'); ?>
-            </td>
-            <td class="text-right"><?php echo format_currency($invoice->invoice_item_subtotal); ?></td>
-        </tr>
-<!-- ======= -->
-<!-- >>>>>>> GH.v.1.5.12-item_subtotal -->
                 <td class="item-price">
 					<?php echo format_currency($item->item_price); ?><br>
 					<?php echo format_currency($item->item_subtotal); ?><br>
@@ -272,10 +209,6 @@
             <td class="text-right"><?php echo format_currency($invoice->invoice_item_subtotal); ?></td>
         </tr>
         <?php // Tax Row ?>
-<!-- <<<<<<< HEAD -->
-<!-- >>>>>>> invoiceplane_dpoper_blue.theme -->
-<!-- ======= -->
-<!-- >>>>>>> GH.v.1.5.12-item_subtotal -->
         <?php if (isset($invoice_tax_rates)) { ?>
 			<?php foreach ($invoice_tax_rates as $invoice_tax_rate) : ?>
 				<tr>
