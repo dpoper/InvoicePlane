@@ -1,1 +1,3 @@
+./dascer/* merge=ours
+./dascer/** merge=ours
 ./dascer/dataerkl.html merge=ours
